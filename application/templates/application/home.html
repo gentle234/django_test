@@ -1,0 +1,57 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title>Media Application</title>
+         <link rel="icon" href="data:,">
+        {% load static %}
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                padding: 20px;
+                background-color: rgb(221, 210, 210);
+            }
+            .media-section {
+                margin: 20px 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .image-caption {
+                margin-top: 5px;
+                font-size: 14px;
+            }
+            img {
+                width: 480px;
+                height: 400px
+            }
+        </style>
+    </head>
+    <body>
+        <h1>{{ Welcome_message }}</h1>
+        <h2>Images</h2>
+        <div class="media-section">
+          
+            {% for image in images %}
+            <div>
+                <img src="{% static image.src %}" alt="{{ image.caption }}">
+                <div class="image-caption">{{ image.caption }}</div>
+            </div>
+            {% endfor %}
+        </div>
+        <h2>Video</h2>
+        <div class="media-section"> 
+            <iframe width="480" height="315" src="https://www.youtube.com/embed/qDwdMDQ8oX4?si=k3eTJXKXs7v_P3LW" autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="480" height="315" src="https://www.youtube.com/embed/qDwdMDQ8oX4?si=C_WiGRkNIjZB7SnC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/qDwdMDQ8oX4?si=cCTadNpaHnYcg7iC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    
+        <div class="media-sections">
+            <h2>Find Relevant Links</h2>
+            <ul>
+                {% for file in files %}
+                    <li><a href="{% static file.href %}" download>{{ file.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </body>
+</html>
